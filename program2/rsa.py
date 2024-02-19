@@ -11,18 +11,18 @@ import primegen
 
 #Take Input
 os.chdir("/home/kingkoobie/cs401/program2")
-with open("input1text.txt","r") as f:
-    startingtext = f.read()
+# with open("input1text.txt","r") as f:
+#     startingtext = f.read()
 
-#Present Input String
-def get_input(txt):
-    txt_char = ""
-    data_list = txt.split()
-    for iii in data_list:
-        print(iii)
-        int_iii = int(iii)
-        txt_char += chr(int_iii)
-    return print(txt_char)
+# #Present Input String
+# def get_input(txt):
+#     txt_char = ""
+#     data_list = txt.split()
+#     for iii in data_list:
+#         print(iii)
+#         int_iii = int(iii)
+#         txt_char += chr(int_iii)
+#     return print(txt_char)
 
 def block_splitter(block_num):
     pass
@@ -32,27 +32,33 @@ def block_splitter(block_num):
 def public_key(ppp, qqq, eee):
     pass
 
-def private_key():
+def private_key(ppp, qqq, nnn):
     pass
 
 def encryption():
     pass
 
-#Global RSA Vars
-ppp = 0
-qqq = 0
-block_size = 0
+def striplines(linelist):
+    max = len(linelist)
+    for iii in range(max):
+        linelist[iii] = linelist[iii].strip()
 
 def main():
-    f = open("input1pq.txt","r")
-    pqinputs = f.readline()
+    fpq = open("input1pq.txt","r")
+    pqinputs = fpq.readlines()
+    ftxt = open("input1text.txt", "r")
+    txt = ftxt.readlines()
+    striplines(pqinputs)
+    striplines(txt)
+    print(pqinputs)
+    print(txt)
 
 
 
-
-    getpq(pqinputs, ppp, qqq, block_size)
-    print(f"ppp: {ppp}\nqqq: {qqq}\nblock_size: {block_size}")
-    f.close()
+    # getpq(pqinputs, ppp, qqq, block_size)
+    # print(f"ppp: {ppp}\nqqq: {qqq}\nblock_size: {block_size}")
+    fpq.close()
+    ftxt.close()
     return
     
 
