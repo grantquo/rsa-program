@@ -24,24 +24,41 @@ os.chdir("/home/kingkoobie/cs401/program2")
 #         txt_char += chr(int_iii)
 #     return print(txt_char)
 
+#Input Processsing
 def block_splitter(block_num):
-    pass
-
-
-#Encryption
-def public_key(ppp, qqq, eee):
-    pass
-
-def private_key(ppp, qqq, nnn):
-    pass
-
-def encryption():
     pass
 
 def striplines(linelist):
     max = len(linelist)
     for iii in range(max):
         linelist[iii] = linelist[iii].strip()
+
+
+
+def public_key(pqtext_input):
+    #Grab inputs from line
+    inputslist = pqtext_input.split()
+    ppp = inputslist[0]
+    qqq = inputslist[1]
+    eee = inputslist[2]
+    block = inputslist[3]
+    modulus = ppp*qqq
+    return ppp,qqq,eee,block,modulus
+
+def private_key(p, q, e, modulus):
+    modn = (p-1)*(q-1)
+    d = (2*modn+1)/e
+    return d
+
+#Encryption/Decryption
+def print_info():
+    pass
+
+def encrypt():
+    pass
+
+def decrypt():
+    pass
 
 def main():
     fpq = open("input1pq.txt","r")
@@ -55,8 +72,6 @@ def main():
 
 
 
-    # getpq(pqinputs, ppp, qqq, block_size)
-    # print(f"ppp: {ppp}\nqqq: {qqq}\nblock_size: {block_size}")
     fpq.close()
     ftxt.close()
     return
