@@ -25,8 +25,9 @@ os.chdir("/home/kingkoobie/cs401/program2")
 #     return print(txt_char)
 
 #Input Processsing
-def block_splitter(block_num):
-    pass
+def block_splitter(text_input, block_num):
+    block_list = []
+    for character
 
 def striplines(linelist):
     max = len(linelist)
