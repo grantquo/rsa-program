@@ -1,0 +1,252 @@
+P:                                 503
+Q:                                 509
+MODULUS:                        256027 # product of P times Q
+PHIOFMODULUS:                   255016 # (P-1)*(Q-1)  # Note 2^18 = 262144
+ENCRYPTION e:                      113 # known to all
+DECRYPTION d:                   234705 # found by solving
+                                       # 113x = 1 mod PHIOFMODULUS for x
+VERIFY:                              1 # multiplying e times d mod PHIOFMODULUS
+BLOCKSIZE:                           2 # how many bytes in a text block
+
+# NOTE:  Here and throughout the "X" characters are delimiters to make
+#        sure I can see blank spaces
+
+MESSAGE:        Xthis is the message to be sentX # the original message
+
+BYTES 0-1 XthX # the first two bytes are the "th" of "this is ..."
+ENCRYPT MESSAGE
+BLOCKSIZE=   2 MSGBLOCK=XthX
+
+# To get numbers for each letter I did an index lookup rather than
+using the ASCII code, thus "t" is the 19th letter in the alphabet,
+# and "h" is the 7th letter.
+# I create an integer from these index values,
+# shifted left (multiplying by 256=2^8) for each byte
+
+t  19 19
+h   7 4871 # = 256*19 + 7
+MSG AS INTEGER:                   4871  # in bits: 00010011 00000111
+ENCRYPTION DONE
+ENCRYPTED:                      148837 XthX # 148837 = 4871^113 mod MODULUS
+
+DECRYPT MESSAGE
+ENCRYPTED:                      148837
+DECRYPTED:                        4871 # 4871 = 148837^234705 mod MODULUS
+DECRYPTION DONE
+DECRYPTED: XthX # converting 4871 back into characters
+
+# and repeat for the next block of characters
+
+BYTES 2-3 XisX
+ENCRYPT MESSAGE
+BLOCKSIZE=   2 MSGBLOCK=XisX
+i   8 8
+s  18 2066
+MSG AS INTEGER:                   2066
+ENCRYPTION DONE
+ENCRYPTED:                      183723 XisX
+
+DECRYPT MESSAGE
+ENCRYPTED:                      183723
+DECRYPTED:                        2066
+DECRYPTION DONE
+DECRYPTED: XisX
+
+BYTES 4-5 X iX
+ENCRYPT MESSAGE
+BLOCKSIZE=   2 MSGBLOCK=X iX
+   26 26
+i   8 6664
+MSG AS INTEGER:                   6664
+ENCRYPTION DONE
+ENCRYPTED:                       56664 X iX
+
+DECRYPT MESSAGE
+ENCRYPTED:                       56664
+DECRYPTED:                        6664
+DECRYPTION DONE
+DECRYPTED: X iX
+
+BYTES 6-7 Xs X
+ENCRYPT MESSAGE
+BLOCKSIZE=   2 MSGBLOCK=Xs X
+s  18 18
+   26 4634
+MSG AS INTEGER:                   4634
+ENCRYPTION DONE
+ENCRYPTED:                      231155 Xs X
+
+DECRYPT MESSAGE
+ENCRYPTED:                      231155
+DECRYPTED:                        4634
+DECRYPTION DONE
+DECRYPTED: Xs X
+
+BYTES 8-9 XthX
+ENCRYPT MESSAGE
+BLOCKSIZE=   2 MSGBLOCK=XthX
+t  19 19
+h   7 4871
+MSG AS INTEGER:                   4871
+ENCRYPTION DONE
+ENCRYPTED:                      148837 XthX
+
+DECRYPT MESSAGE
+ENCRYPTED:                      148837
+DECRYPTED:                        4871
+DECRYPTION DONE
+DECRYPTED: XthX
+
+BYTES 10-11 Xe X
+ENCRYPT MESSAGE
+BLOCKSIZE=   2 MSGBLOCK=Xe X
+e   4 4
+   26 1050
+MSG AS INTEGER:                   1050
+ENCRYPTION DONE
+ENCRYPTED:                      153951 Xe X
+
+DECRYPT MESSAGE
+ENCRYPTED:                      153951
+DECRYPTED:                        1050
+DECRYPTION DONE
+DECRYPTED: Xe X
+
+BYTES 12-13 XmeX
+ENCRYPT MESSAGE
+BLOCKSIZE=   2 MSGBLOCK=XmeX
+m  12 12
+e   4 3076
+MSG AS INTEGER:                   3076
+ENCRYPTION DONE
+ENCRYPTED:                      156493 XmeX
+
+DECRYPT MESSAGE
+ENCRYPTED:                      156493
+DECRYPTED:                        3076
+DECRYPTION DONE
+DECRYPTED: XmeX
+
+BYTES 14-15 XssX
+ENCRYPT MESSAGE
+BLOCKSIZE=   2 MSGBLOCK=XssX
+s  18 18
+s  18 4626
+MSG AS INTEGER:                   4626
+ENCRYPTION DONE
+ENCRYPTED:                      244344 XssX
+
+DECRYPT MESSAGE
+ENCRYPTED:                      244344
+DECRYPTED:                        4626
+DECRYPTION DONE
+DECRYPTED: XssX
+
+BYTES 16-17 XagX
+ENCRYPT MESSAGE
+BLOCKSIZE=   2 MSGBLOCK=XagX
+a   0 0
+g   6 6
+MSG AS INTEGER:                      6
+ENCRYPTION DONE
+ENCRYPTED:                      223277 XagX
+
+DECRYPT MESSAGE
+ENCRYPTED:                      223277
+DECRYPTED:                           6
+DECRYPTION DONE
+DECRYPTED: XagX
+
+BYTES 18-19 Xe X
+ENCRYPT MESSAGE
+BLOCKSIZE=   2 MSGBLOCK=Xe X
+e   4 4
+   26 1050
+MSG AS INTEGER:                   1050
+ENCRYPTION DONE
+ENCRYPTED:                      153951 Xe X
+
+DECRYPT MESSAGE
+ENCRYPTED:                      153951
+DECRYPTED:                        1050
+DECRYPTION DONE
+DECRYPTED: Xe X
+
+BYTES 20-21 XtoX
+ENCRYPT MESSAGE
+BLOCKSIZE=   2 MSGBLOCK=XtoX
+t  19 19
+o  14 4878
+MSG AS INTEGER:                   4878
+ENCRYPTION DONE
+ENCRYPTED:                      250910 XtoX
+
+DECRYPT MESSAGE
+ENCRYPTED:                      250910
+DECRYPTED:                        4878
+DECRYPTION DONE
+DECRYPTED: XtoX
+
+BYTES 22-23 X bX
+ENCRYPT MESSAGE
+BLOCKSIZE=   2 MSGBLOCK=X bX
+   26 26
+b   1 6657
+MSG AS INTEGER:                   6657
+ENCRYPTION DONE
+ENCRYPTED:                      195805 X bX
+
+DECRYPT MESSAGE
+ENCRYPTED:                      195805
+DECRYPTED:                        6657
+DECRYPTION DONE
+DECRYPTED: X bX
+
+BYTES 24-25 Xe X
+ENCRYPT MESSAGE
+BLOCKSIZE=   2 MSGBLOCK=Xe X
+e   4 4
+   26 1050
+MSG AS INTEGER:                   1050
+ENCRYPTION DONE
+ENCRYPTED:                      153951 Xe X
+
+DECRYPT MESSAGE
+ENCRYPTED:                      153951
+DECRYPTED:                        1050
+DECRYPTION DONE
+DECRYPTED: Xe X
+
+BYTES 26-27 XseX
+ENCRYPT MESSAGE
+BLOCKSIZE=   2 MSGBLOCK=XseX
+s  18 18
+e   4 4612
+MSG AS INTEGER:                   4612
+ENCRYPTION DONE
+ENCRYPTED:                      166329 XseX
+
+DECRYPT MESSAGE
+ENCRYPTED:                      166329
+DECRYPTED:                        4612
+DECRYPTION DONE
+DECRYPTED: XseX
+
+BYTES 28-29 XntX
+ENCRYPT MESSAGE
+BLOCKSIZE=   2 MSGBLOCK=XntX
+n  13 13
+t  19 3347
+MSG AS INTEGER:                   3347
+ENCRYPTION DONE
+ENCRYPTED:                      205510 XntX
+
+DECRYPT MESSAGE
+ENCRYPTED:                      205510
+DECRYPTED:                        3347
+DECRYPTION DONE
+DECRYPTED: XntX
+
+# As I decrypt blocks, I append the decryption to a running string
+to get the complete message back.
+DECRYPTEDMESSAGE: Xthis is the message to be sentX
