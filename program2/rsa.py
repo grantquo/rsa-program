@@ -14,26 +14,31 @@ os.chdir("/home/kingkoobie/cs401/program2")
 
 #Input Processsing
 
-def block_splitter(line_input, block_num):
+def block_encoder(line_input, block_size):
     block_list = []
-    counter = 0
-    block_item = ""
-    
-    for element in line_input:
-        if counter < block_num:
-            if element == " ":
-                counter += 1
-                block_item += element
-            else:
-                block_item += element
-        else:
+    counter = block_size-1
+    block_item = 0
+    print(line_input.split())
+    line_vals = line_input.split()
+
+    for iii in line_vals:
+        iii = int(iii)
+        print(f"focused iii: {iii}")
+        encoded_iii = iii*256**counter
+        print(f"encoded_iii= {encoded_iii} = {iii}*256**{counter}")
+        if counter > 0: #if block size hasnt been reached
+            counter -= 1
+            block_item += encoded_iii
+        else: #if block size has been reached
+            counter = block_size-1
             block_list.append(block_item)
-            block_item = element
-            counter = 0
-    
-    if block_item != "":
+            block_item = encoded_iii
+        print(f"block_list: {block_list}")
+        print(f"block_item = {block_item}")
+
+    if block_item > 0:  #if partial block is made
         block_list.append(block_item)
-    
+
     return block_list
 
 
@@ -108,12 +113,11 @@ def main():
     txt = striplines(txt)
     #Begin Key-Making
     ppp, qqq, eee, block, modulus = public_key(pqinputs[0])
-    txt_blocks = block_splitter(txt[0], block)
-    txt_blocks = encoded_blocks(txt_blocks)
+    txt_blocks = block_encoder(txt[0], block)
     ddd = private_key(ppp, qqq, eee)
-
-    print(f"ppp= {ppp}\nqqq= {qqq}\neee= {eee}\nblock= {block}\nmodulus= {modulus}\nddd= {ddd}")
-    rsa_list = encrypt(txt_blocks, eee, modulus)
+    print(txt_blocks)
+    # print(f"ppp= {ppp}\nqqq= {qqq}\neee= {eee}\nblock= {block}\nmodulus= {modulus}\nddd= {ddd}")
+    # rsa_list = encrypt(txt_blocks, eee, modulus)
     #plain_text_blocks = decrypt(ddd, modulus, rsa_list)
     #print(plain_text_blocks)
 
