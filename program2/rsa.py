@@ -53,6 +53,7 @@ def public_key(pqtext_input):
 
 def private_key(ppp, qqq, eee):
     phi_n = (ppp-1)*(qqq-1)
+    print(f"phi_n= {phi_n}")
     ddd = (2*phi_n+1)//eee
     return ddd
 
@@ -66,6 +67,14 @@ def print_info():
 
 
 #Encryption/Decryption
+# def block_encoding(block_list):
+#     encoded = []
+#     for block in block_list:
+#         chars_list = block.split()
+#         for character in chars_list:
+#             encoded_char = int(character)*
+    
+
 def encrypt(block_list, eee, nnn):
     encrypted_txt = ""
     for block in block_list:
@@ -77,10 +86,14 @@ def encrypt(block_list, eee, nnn):
         encrypted_txt += str(encrypted_block)+" "
     return encrypted_txt
 
-def decrypt(ddd, encrypted_input):
+def decrypt(ddd, modulus, encrypted_input):
     decrypted_blocks = []
     for block in encrypted_input:
-        decrypted_block = 
+        block = int(block)
+        block = (block**ddd) % modulus
+        decrypted_blocks.append(block)
+    return decrypted_blocks
+
 
 
 #Main Processes
@@ -96,10 +109,13 @@ def main():
     #Begin Key-Making
     ppp, qqq, eee, block, modulus = public_key(pqinputs[0])
     txt_blocks = block_splitter(txt[0], block)
-    
+    txt_blocks = encoded_blocks(txt_blocks)
     ddd = private_key(ppp, qqq, eee)
+
+    print(f"ppp= {ppp}\nqqq= {qqq}\neee= {eee}\nblock= {block}\nmodulus= {modulus}\nddd= {ddd}")
     rsa_list = encrypt(txt_blocks, eee, modulus)
-    plain_text_blocks = decrypt(ddd, rsa_list)
+    #plain_text_blocks = decrypt(ddd, modulus, rsa_list)
+    #print(plain_text_blocks)
 
 
 
