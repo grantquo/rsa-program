@@ -43,7 +43,6 @@ def striplines(linelist):
 
 def public_key(pqtext_input):
     #Grab inputs from line
-    print(pqtext_input)
     inputslist = pqtext_input.split()
     ppp = int(inputslist[0])
     qqq = int(inputslist[1])
@@ -52,10 +51,10 @@ def public_key(pqtext_input):
     modulus = int(ppp)*int(qqq)
     return ppp,qqq,eee,block,modulus
 
-def private_key(p, q, e, modulus):
+def private_key(p, q, e):
     modn = (p-1)*(q-1)
-    d = (2*modn+1)/e
-    return d
+    d = (2*modn+1)//e
+    return d, modn
 
 
 #Output Processing
@@ -67,10 +66,20 @@ def print_info():
 
 
 #Encryption/Decryption
-def encrypt():
-    pass
+def encrypt(block_list, eee, modn):
+    encrypted_txt = ""
+    for block in block_list:
+        print(block)
+        chars_list = block.split()
+        encrypted_block = 0
+        for character in chars_list:
+            num = int(character)
+            encrypted_block += (num**eee)*modn
+        print(encrypted_block)
+        encrypted_txt += str(encrypted_block)+" "
+    return print(encrypted_txt)
 
-def decrypt():
+def decrypt(ddd, modn):
     pass
 
 
@@ -85,9 +94,11 @@ def main():
     pqinputs = striplines(pqinputs)
     txt = striplines(txt)
     #Begin Key-Making
-    block_splitter(txt[0], 7)
+    txt_blocks = block_splitter(txt[0], 7)
+    ppp, qqq, eee, block, phimodulus = public_key(pqinputs[0])
+    ddd, modn = private_key(ppp, qqq, eee)
+    encrypt(txt_blocks, eee, modn)
 
-    ppp, qqq, eee, block, modulus = public_key(pqinputs[0])
 #Procedures
 
 

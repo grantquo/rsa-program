@@ -1,3 +1,13 @@
 /primroots
 /primroots.zip
 /program1
+endlesssieve.zip
+endlesssieve/.DS_Store
+endlesssieve/endlesssieve.py
+endlesssieve/primesout10M.txt
+endlesssieve/README.txt
+endlesssieve/xblocks.txt
+endlesssieve/xprimesto100k.txt
+endlesssieve/yscript.sh
+endlesssieve/zlog.txt
+endlesssieve/zout1M.txt
