@@ -13,9 +13,29 @@ import primegen
 os.chdir("/home/kingkoobie/cs401/program2")
 
 #Input Processsing
-def block_splitter(text_input, block_num):
+
+def block_splitter(line_input, block_num):
     block_list = []
-    for character in text_input
+    counter = 0
+    block_item = ""
+    
+    for element in line_input:
+        if counter <= block_num:
+            if element == " ":
+                counter += 1
+                block_item += element
+            else:
+                block_item += element
+        else:
+            block_list.append(block_item)
+            block_item = element
+            counter = 0
+    
+    if block_item != "":
+        block_list.append(block_item)
+    
+    return print(block_list)
+
 
 def striplines(linelist):
     strippedlist = [iii.strip() for iii in linelist]
@@ -61,16 +81,11 @@ def main():
         pqinputs = fpq.readlines()
     with open("input1text.txt", "r") as ftxt:
         txt = ftxt.readlines()
-    
-    striplines(pqinputs)
-    striplines(txt)
-    print(pqinputs)
-    print(txt)
-
+    pqinputs = striplines(pqinputs)
+    txt = striplines(txt)
     #Begin Key-Making
-
-
-    pass
+    
+    block_splitter(txt[0], 7)
 
 #Procedures
 
