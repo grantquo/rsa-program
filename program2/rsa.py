@@ -34,7 +34,7 @@ def block_splitter(line_input, block_num):
     if block_item != "":
         block_list.append(block_item)
     
-    return print(block_list)
+    return block_list
 
 
 def striplines(linelist):
@@ -43,12 +43,13 @@ def striplines(linelist):
 
 def public_key(pqtext_input):
     #Grab inputs from line
+    print(pqtext_input)
     inputslist = pqtext_input.split()
-    ppp = inputslist[0]
-    qqq = inputslist[1]
-    eee = inputslist[2]
-    block = inputslist[3]
-    modulus = ppp*qqq
+    ppp = int(inputslist[0])
+    qqq = int(inputslist[1])
+    eee = int(inputslist[2])
+    block = int(inputslist[3])
+    modulus = int(ppp)*int(qqq)
     return ppp,qqq,eee,block,modulus
 
 def private_key(p, q, e, modulus):
@@ -84,9 +85,9 @@ def main():
     pqinputs = striplines(pqinputs)
     txt = striplines(txt)
     #Begin Key-Making
-    
     block_splitter(txt[0], 7)
 
+    ppp, qqq, eee, block, modulus = public_key(pqinputs[0])
 #Procedures
 
 
