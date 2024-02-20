@@ -25,15 +25,13 @@ os.chdir("/home/kingkoobie/cs401/program2")
 #     return print(txt_char)
 
 #Input Processsing
-def block_splitter(text_input, block_num):
-    block_list = []
-    for character
+# def block_splitter(text_input, block_num):
+#     block_list = []
+#     for character
 
 def striplines(linelist):
-    max = len(linelist)
-    for iii in range(max):
-        linelist[iii] = linelist[iii].strip()
-
+    strippedlist = [iii.strip() for iii in linelist]
+    return strippedlist
 
 
 def public_key(pqtext_input):
@@ -62,10 +60,10 @@ def decrypt():
     pass
 
 def main():
-    fpq = open("input1pq.txt","r")
-    pqinputs = fpq.readlines()
-    ftxt = open("input1text.txt", "r")
-    txt = ftxt.readlines()
+    with open("input1pq.txt","r") as fpq:
+        pqinputs = fpq.readlines()
+    with open("input1text.txt", "r") as ftxt:
+        txt = ftxt.readlines()
     striplines(pqinputs)
     striplines(txt)
     print(pqinputs)
