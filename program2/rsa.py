@@ -20,7 +20,7 @@ def block_splitter(line_input, block_num):
     block_item = ""
     
     for element in line_input:
-        if counter <= block_num:
+        if counter < block_num:
             if element == " ":
                 counter += 1
                 block_item += element
@@ -48,13 +48,13 @@ def public_key(pqtext_input):
     qqq = int(inputslist[1])
     eee = int(inputslist[2])
     block = int(inputslist[3])
-    modulus = int(ppp)*int(qqq)
-    return ppp,qqq,eee,block,modulus
+    mod = int(ppp)*int(qqq)
+    return ppp,qqq,eee,block,mod
 
-def private_key(p, q, e):
-    modn = (p-1)*(q-1)
-    d = (2*modn+1)//e
-    return d, modn
+def private_key(ppp, qqq, eee):
+    phi_n = (ppp-1)*(qqq-1)
+    ddd = (2*phi_n+1)//eee
+    return ddd
 
 
 #Output Processing
@@ -66,21 +66,21 @@ def print_info():
 
 
 #Encryption/Decryption
-def encrypt(block_list, eee, modn):
+def encrypt(block_list, eee, nnn):
     encrypted_txt = ""
     for block in block_list:
-        print(block)
         chars_list = block.split()
         encrypted_block = 0
         for character in chars_list:
             num = int(character)
-            encrypted_block += (num**eee)*modn
-        print(encrypted_block)
+            encrypted_block += (num**eee)% nnn 
         encrypted_txt += str(encrypted_block)+" "
-    return print(encrypted_txt)
+    return encrypted_txt
 
-def decrypt(ddd, modn):
-    pass
+def decrypt(ddd, encrypted_input):
+    decrypted_blocks = []
+    for block in encrypted_input:
+        decrypted_block = 
 
 
 #Main Processes
@@ -94,10 +94,14 @@ def main():
     pqinputs = striplines(pqinputs)
     txt = striplines(txt)
     #Begin Key-Making
-    txt_blocks = block_splitter(txt[0], 7)
-    ppp, qqq, eee, block, phimodulus = public_key(pqinputs[0])
-    ddd, modn = private_key(ppp, qqq, eee)
-    encrypt(txt_blocks, eee, modn)
+    ppp, qqq, eee, block, modulus = public_key(pqinputs[0])
+    txt_blocks = block_splitter(txt[0], block)
+    
+    ddd = private_key(ppp, qqq, eee)
+    rsa_list = encrypt(txt_blocks, eee, modulus)
+    plain_text_blocks = decrypt(ddd, rsa_list)
+
+
 
 #Procedures
 

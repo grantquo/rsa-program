@@ -32,7 +32,7 @@ def prime(lower, upper):
                 print(num)
                 counter += 1
 
-prime(4294967296, 4300000000)
+# prime(4294967296, 4300000000)
 #driver
 
 # starting_range = 4294967296 
