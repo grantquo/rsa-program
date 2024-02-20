@@ -11,28 +11,15 @@ import primegen
 
 #Take Input
 os.chdir("/home/kingkoobie/cs401/program2")
-# with open("input1text.txt","r") as f:
-#     startingtext = f.read()
-
-# #Present Input String
-# def get_input(txt):
-#     txt_char = ""
-#     data_list = txt.split()
-#     for iii in data_list:
-#         print(iii)
-#         int_iii = int(iii)
-#         txt_char += chr(int_iii)
-#     return print(txt_char)
 
 #Input Processsing
-# def block_splitter(text_input, block_num):
-#     block_list = []
-#     for character
+def block_splitter(text_input, block_num):
+    block_list = []
+    for character in text_input
 
 def striplines(linelist):
     strippedlist = [iii.strip() for iii in linelist]
     return strippedlist
-
 
 def public_key(pqtext_input):
     #Grab inputs from line
@@ -49,32 +36,41 @@ def private_key(p, q, e, modulus):
     d = (2*modn+1)/e
     return d
 
-#Encryption/Decryption
+
+#Output Processing
+def ascii_convert(text_input):
+    pass
+
 def print_info():
     pass
 
+
+#Encryption/Decryption
 def encrypt():
     pass
 
 def decrypt():
     pass
 
+
+#Main Processes
 def main():
+    
+    #Input Files
     with open("input1pq.txt","r") as fpq:
         pqinputs = fpq.readlines()
     with open("input1text.txt", "r") as ftxt:
         txt = ftxt.readlines()
+    
     striplines(pqinputs)
     striplines(txt)
     print(pqinputs)
     print(txt)
 
+    #Begin Key-Making
 
 
-    fpq.close()
-    ftxt.close()
-    return
-    
+    pass
 
 #Procedures
 
