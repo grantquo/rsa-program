@@ -1,0 +1,40 @@
+# def double_x(xxx, yyy, zzz, aaa):
+    
+#     #outputs jacobian coords
+
+#     #slope
+
+#     numerator1 = 3*expo(xxx,2)+3*expo(zzz,4)
+#     numerator2 = expo(numerator1,2)-8*xxx*expo(yyy,2)
+#     denominator = 4*expo(yyy,2)*expo(zzz, 2)
+#     doubledx = numerator2/denominator
+
+#     return doubledx
+
+# def double_y(xxx, doubledxxx, yyy, zzz, aaa, primemod):
+#     numerator = 3*expo(xxx,2)+3*expo(zzz,4)
+#     denominator = 2*yyy*zzz
+#     factor = (numerator/denominator)*((xxx/expo(zzz,2))-doubledxxx)
+#     double_y = (factor - (yyy/expo(zzz,3)))
+#     return mymod(double_y, primemod)
+
+
+# print(double_x(3, 3, 1, 3))
+# print(double_y(3, double_x(3, 3, 1, 3), 3, 1, 3, 31))
+
+# print("\n")
+# x1 = double_x(2, 21, 6, 3)
+# print(x1)
+# print(double_y(2, x1, 21, 6, 3, 31))
+
+////////////////////////////////////////////////
+# xxx3, yyy3, zzz3 = double_point(19, 10, 1, 3)
+# print(f"postfunction:\nxxx3: {xxx3}\nyyy3: {yyy3}\nzzz3: {zzz3}")
+# print(double_point(19, 10, 1, 3))
+
+
+# bruh = mymod(15202944*expo(2, 2), 31)
+# print(bruh)
+# zin = zinverse(zzz3, 31)
+# print(zin)
+# print(jacob_coord(xxx3, yyy3, zin))

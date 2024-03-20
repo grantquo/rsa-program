@@ -1,0 +1,9 @@
+ARGPARSE OPTIONS Namespace(outfilename='zout.txt', logfilename='zlog.txt')
+TIME*******************************************************************
+TIME BEGINNING            100.000       0.000 user        0.000 wall
+TIME BEGINNING                          0.054 user_t      0.000 wall_t
+TIME*******************************************************************
+TIME*******************************************************************
+TIME ENDING                99.927       0.001 user        0.001 wall
+TIME ENDING                             0.055 user_t      0.001 wall_t
+TIME*******************************************************************
