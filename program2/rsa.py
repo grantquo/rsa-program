@@ -10,7 +10,7 @@ import os
 import primegen
 
 #Take Input
-os.chdir("/home/kingkoobie/cs401/program2")
+os.chdir("/program2")
 
 
 #///////////////////////////////////////////////////
